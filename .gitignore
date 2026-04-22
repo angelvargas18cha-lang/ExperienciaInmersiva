@@ -6,15 +6,11 @@ env/
 __pycache__/
 *.pyc
 
-# Base de datos local (NO SE DEBE SUBIR A GIT NORMALMENTE)
-db.sqlite3
-
-# Archivos de sistema operativo
-.DS_Store
-Thumbs.db
+# Base de datos local permitida para este caso
+# db.sqlite3 no ignorada
 
 # Archivos multimedia subidos por usuarios
-media/
+# media/ no ignorada
 
 # Otros comunes
 .env
