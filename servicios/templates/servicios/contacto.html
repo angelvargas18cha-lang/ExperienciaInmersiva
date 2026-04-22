@@ -1,0 +1,30 @@
+{% extends "inicio/menu.html" %} 
+{% block titulo %}CONTACTANOS{% endblock %}
+
+{% block contenido %}
+<section class="form-section2">
+<!-- HERO -->
+  
+  
+<div class="form-container">
+  <h2>Solicita Informacion</h2>
+
+  <form method="POST">
+    {% csrf_token %}
+
+    <input type="text" name="nombre" placeholder="Nombre" required />
+    <input type="email" name="correo" placeholder="Correo" required />
+    <input type="text" name="telefono" placeholder="Teléfono" required />
+
+    <textarea
+      name="descripcion"
+      placeholder="Describenos tus dudas"
+      required
+    ></textarea>
+
+    <button type="submit">Enviar</button>
+  </form>
+</div>
+</section>
+{% endblock %}
+   

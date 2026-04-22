@@ -1,0 +1,1046 @@
+/* Estilos del menú hamburguesa y barra de navegación */
+.navbar-nav {
+  list-style-type: none;
+  padding: 0;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  gap: 40px;
+  width: fit-content;
+  max-width: 800px;
+  transition: all 0.3s ease;
+}
+
+.nav-item {
+  margin-right: 0; /* Eliminamos margen derecho fijo para usar el gap del contenedor */
+}
+
+.nav-link {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+.nav-link:hover {
+  color: #00AEEF; 
+  transform: translateY(-2px);
+}
+
+/* Estilos del botón hamburguesa */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.bar {
+  display: block;
+  width: 28px;
+  height: 3px;
+  margin: 5px 0;
+  background-color: #00AEEF; /* Color cyan */
+  transition: all 0.3s ease-in-out;
+}
+
+/* Estilos para pantallas pequeñas */
+@media (max-width: 992px) {
+  .menu-toggle {
+    display: block;
+    z-index: 1100; /* Un poco más alto para que esté sobre el menú */
+  }
+
+  .navbar-nav {
+    position: fixed;
+    left: -100%;
+    top: 0;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    justify-content: center;
+    transition: 0.4s ease;
+    gap: 30px;
+    z-index: 1000;
+    margin: 0;
+    max-width: none;
+  }
+
+  .navbar-nav.active {
+    left: 0;
+  }
+
+  .nav-link {
+    font-size: 1.5rem;
+    color: #fff;
+  }
+
+  /* Estilos para el botón hamburguesa cuando se hace clic (transformación a "X") */
+  #mobile-menu.is-active .bar:nth-child(2) {
+    opacity: 0;
+  }
+  #mobile-menu.is-active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  #mobile-menu.is-active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+}
+
+/* =====  BODY Y FONDO ===== */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif; /* Asegúrate de tener Poppins cargada */
+    background: #010e2a; /* Fondo base muy oscuro */
+    color: white;
+    overflow-x: hidden;
+}
+
+/* Efecto de partículas sutiles de fondo (mejorado) */
+body::before {
+    content: "";
+    position: fixed;
+    width: 100%; height: 100%;
+    top: 0; left: 0;
+    background-image: 
+        radial-gradient(rgba(0, 174, 239, 0.2) 1px, transparent 1px), /* Acento cyan */
+        radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 80px 80px, 120px 120px;
+    opacity: 0.2;
+    z-index: -1;
+    animation: movimiento 30s linear infinite;
+}
+
+@keyframes movimiento {
+    from { transform: translateY(0); }
+    to { transform: translateY(-1000px); }
+}
+
+/* ===== 2. MENÚ DE NAVEGACIÓN (Actualizado) ===== */
+#mainNav {
+    position: fixed;
+    top: 0;
+    left: 0; /* Asegura que empiece desde el borde izquierdo */
+    width: 100%;
+    padding: 25px 0; 
+    background: rgba(1, 14, 42, 0.85); 
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    z-index: 1000;
+    
+    /* Agregamos esto para centrar el bloque interno */
+    display: flex;
+    justify-content: center; 
+}
+
+.nav-link:hover {
+    color: #00AEEF; 
+    transform: translateY(-2px); /* Pequeño salto al pasar el mouse */
+}
+
+/* ===== 3. DISEÑO "NOSOTROS" ===== */
+.nosotros-wrapper {
+    padding-top: 100px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Hero Nosotros */
+.hero-360-v2 {
+    padding: 80px 0;
+    background: radial-gradient(circle at top right, rgba(0, 51, 102, 0.5), transparent);
+}
+
+.hero-flex {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    flex-wrap: wrap;
+}
+
+.hero-text-content { flex: 1; min-width: 300px; }
+.hero-visual { flex: 1; display: flex; justify-content: center; }
+
+.badge {
+    background: rgba(0, 174, 239, 0.1);
+    color: #00AEEF;
+    padding: 6px 15px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.titulo-moderno {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 1;
+    margin: 20px 0;
+    font-weight: 800;
+}
+
+.gradient-text {
+    background: linear-gradient(90deg, #fff, #00AEEF);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.hero-lead {
+    font-size: 1.2rem;
+    color: #aaa;
+    max-width: 500px;
+}
+
+/* Imagen con resplandor */
+.logo-hero {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 30px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.image-glow-container {
+    position: relative;
+}
+
+.image-glow-container::after {
+    content: "";
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 110%; height: 110%;
+    background: radial-gradient(circle, rgba(0, 174, 239, 0.2), transparent 70%);
+    z-index: -1;
+}
+
+/* Grilla de Contenido */
+.content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 80px;
+}
+
+.info-box {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 40px;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: 0.3s;
+}
+
+.info-box:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: #00AEEF;
+    transform: translateY(-10px);
+}
+
+.info-icon { font-size: 2.5rem; margin-bottom: 20px; }
+.info-box h2 { font-size: 1.5rem; margin-bottom: 15px; color: #fff; }
+.info-box p { color: #ccc; line-height: 1.7; }
+
+.highlight-box {
+    border: 1px solid rgba(0, 174, 239, 0.3);
+    background: linear-gradient(135deg, rgba(0, 51, 102, 0.2), rgba(0, 174, 239, 0.05));
+}
+
+.feature-list {
+    list-style: none;
+    padding: 0;
+    color: #ccc;
+}
+
+.feature-list li {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.feature-list li::before {
+    content: "✓";
+    color: #00AEEF;
+    font-weight: bold;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-flex { text-align: center; }
+    .hero-lead { margin: 0 auto; }
+}
+
+
+
+/*================ PÁGINA DE SERVICIOS ==================== */
+.section-intro-premium {
+    text-align: center;
+    padding: 80px 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding-top: 100px;
+}
+
+
+
+/* Título de gran impacto */
+.main-title-bold {
+    font-size: 3.5rem; /* Tamaño grande similar a "Nuestros Proyectos" */
+     color: #00AEEF;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 25px;
+    letter-spacing: -1px;
+}
+
+/* Línea de acento estilo Universidad */
+.accent-line {
+    width: 60px;
+    height: 4px;
+    background: #00AEEF;
+    margin: 0 auto 30px;
+    border-radius: 2px;
+}
+
+/* Descripción sutil */
+.subtext-refined {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.2rem;
+    line-height: 1.8;
+    font-weight: 300;
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+/* Ajuste para móviles */
+@media (max-width: 768px) {
+    .main-title-bold {
+        font-size: 2.5rem;
+    }
+}
+
+.section-intro {
+    text-align: center;
+    margin-top: 140px; /* Espacio para que no pegue al nav */
+    margin-bottom: 40px;
+    padding: 0 20px;
+}
+
+.servicios-container {
+    width: 90%;
+    max-width: 1300px;
+    margin: 0 auto 100px auto;
+    display: grid;
+    /* Ajustamos el tamaño mínimo para que no se vean apretadas */
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
+    gap: 50px; /* Más espacio entre tarjetas */
+}
+
+/* ===== TARJETA MÁS LARGA ===== */
+.servicio-card {
+    padding: 35px;
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(0, 174, 239, 0.15);
+    backdrop-filter: blur(15px);
+    text-align: center;
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Esto ayuda a que todas midan lo mismo */
+    min-height: 550px; /* Forzamos a que sean más largas */
+}
+
+/* ===== IMAGEN MÁS LARGA Y SIN CORTAR ===== */
+.servicio-card img {
+    width: 100%;
+    height: 350px; /* Aumentamos la altura de la imagen */
+    object-fit: cover; /* Mantiene la proporción sin deformar */
+    border-radius: 18px;
+    margin-bottom: 25px;
+}
+
+.servicio-card:hover {
+    transform: translateY(-15px);
+    border-color: #00AEEF;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+}
+
+/* Tipografía */
+.h4servicios {
+    color: #ffffff;
+    font-size: 26px;
+    font-weight: 800;
+    margin-bottom: 15px;
+}
+
+.servicio-card p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 16px;
+    line-height: 1.8;
+    flex-grow: 1; /* Empuja el botón hacia abajo para que todos alineen */
+}
+
+/* Botón pro */
+.servicio-card a {
+    display: block;
+    margin-top: 30px;
+    padding: 15px;
+    background: linear-gradient(135deg, #003366, #00AEEF);
+    color: white;
+    border-radius: 12px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+/* ==================== PÁGINA DE PROYECTOS ======================== */
+/* ===== CONTENEDOR MAESTRO ===== */
+.proyectos-wrapper {
+    background-color: #0b111a; /* Fondo oscuro profundo */
+    color: white;
+    padding-bottom: 80px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ===== HEADER ===== */
+.proyectos-header {
+    padding: 100px 20px 40px;
+    text-align: center;
+    background: linear-gradient(to bottom, #003366 0%, #0b111a 100%);
+}
+
+.proyectos-header h1 {
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+    letter-spacing: -1px;
+    color: #00AEEF; /* Tu color cyan */
+}
+
+.proyectos-header .subtitle {
+    font-size: 1.2rem;
+    color: #ccc;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.header-line {
+    width: 60px;
+    height: 4px;
+    background: #00AEEF;
+    margin: 20px auto;
+}
+
+/* ===== VIDEO DESTACADO (CENTRADO Y GRANDE) ===== */
+.featured-video-section {
+    max-width: 1000px;
+    margin: 0 auto 80px;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.video-info {
+    margin-bottom: 30px;
+}
+
+.badge {
+    background: #00AEEF;
+    color: #003366;
+    padding: 5px 15px;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0, 174, 239, 0.25);
+    background: #000;
+}
+
+.video-box {
+    width: 100%;
+    display: block;
+    aspect-ratio: 16 / 9; /* Mantiene la proporción siempre */
+}
+
+/* ===== CARDS (ESTILO MODERNO) ===== */
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.proyecto-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+.card-img-wrapper {
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+}
+
+.card-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.proyecto-card:hover {
+    transform: translateY(-15px);
+    border-color: #00AEEF;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.proyecto-card:hover img {
+    transform: scale(1.1);
+}
+
+.card-content {
+    padding: 25px;
+}
+
+.h2proyectos {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.empresa-tag {
+    color: #00AEEF;
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+}
+
+.descripcion-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #aaa;
+}
+
+/*====================== PÁGINA DE COTIZAR ======================== */
+/* ===== 1. REGLAS DE ESPACIADO Y SEPARACIÓN DEL NAV ===== */
+.form-section {
+    min-height: 100vh;
+    padding-top: 140px; /* Separa el contenido del navegador fijo */
+    padding-bottom: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Contenedor principal para que no se pegue a los bordes */
+.container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ===== 2. GRID Y ESTRUCTURA (Respiración visual) ===== */
+.grid-2 {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap:100px;/* Espacio amplio entre descripción y formulario */
+    margin-bottom: 100px; /* Separa de la sección de reseñas */
+}
+
+/* Grid de reseñas para que no se amontonen */
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+/* ===== 3. TARJETAS DE SERVICIO Y RESEÑAS (Estilo Pro) ===== */
+.card {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 25px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-left: 5px solid #00AEEF; /* Detalle en tu color Cyan */
+    transition: 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.card:hover {
+    background: rgba(255, 255, 255, 0.07);
+    transform: translateY(-5px);
+}
+
+.card h3 { color: #fff; margin-bottom: 10px; }
+.card p { color: #ccc; line-height: 1.6; }
+
+/* ===== 4. FORMULARIO DE COTIZACIÓN (Glassmorphism) ===== */
+/* Centra el título de la sección del formulario */
+.form-side h2.sub-style {
+    text-align: center; /* Mueve el título al centro */
+    margin-bottom: 40px; /* Da más espacio antes de los campos */
+}
+
+.form-container {
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(15px);
+    border-radius: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.form-container h2 {
+    color: #fff;
+    margin-bottom: 30px;
+    text-align: left; /* Alineación más moderna */
+}
+
+/* Estilo de los inputs oscuros (como tus capturas) */
+form input, form textarea {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    transition: 0.3s;
+}
+
+
+
+form input:focus, form textarea:focus {
+    border-color: #00AEEF;
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 174, 239, 0.3);
+}
+
+/* Botón con el gradiente oficial de la marca */
+form button {
+    width: 100%;
+    padding: 18px;
+    background: linear-gradient(90deg, #003366, #00AEEF); /* Azul Marino a Cyan */
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+form button:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 20px rgba(0, 174, 239, 0.4);
+}
+
+/* ===== 5. SECCIÓN DE RESEÑAS Y ESTRELLAS ===== */
+.reseña-section {
+    width: 100%;
+    max-width: 800px; /* Para que el form de reseña no sea gigante */
+    margin: 0 auto 80px;
+    text-align: center;
+}
+
+.rating {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+/* Estilos básicos para las estrellas */
+.star-input {
+    font-size: 24px;
+    cursor: pointer;
+    color: #555; /* Gris por defecto */
+    transition: color 0.3s; /* Transición suave */
+}
+
+/* Efecto cuando el ratón pasa sobre las estrellas */
+.star-input:hover {
+    color: #FFD700; /* Amarillo cuando el ratón pasa por encima */
+}
+
+/* Estilo de estrella llena cuando se selecciona (amarillo) */
+.star-input.filled {
+    color: #FFD700; /* Amarillo cuando la estrella está seleccionada */
+}
+
+/* Estilos para las estrellas fijas (de las reseñas) */
+.star {
+    font-size: 24px;
+}
+
+/* Color amarillo para las estrellas de reseñas ya seleccionadas */
+.star.filled {
+    color: #FFD700; /* Amarillo */
+}
+
+/* Asegurarse de que las estrellas del formulario se mantengan amarillas */
+.rating .star-input.filled {
+    color: #FFD700; /* Amarillo */
+}
+
+/* TÍTULO DEL SERVICIO (Ej: Integral, Avanzado Pro) */
+.service-detail-card h3 {
+    color: #fff;
+    font-size: 1.8rem; /* Más grande y llamativo */
+    font-weight: 700;
+    margin-bottom: 20px; /* Separación clara del texto de abajo */
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+}
+
+/* ICONO DECORATIVO ANTES DEL TÍTULO (Opcional) */
+.service-detail-card h3::before {
+    content: '•';
+    color: #00AEEF;
+    margin-right: 10px;
+    font-size: 2.5rem;
+    line-height: 0;
+}
+
+/* DESCRIPCIÓN DEL SERVICIO */
+.service-detail-card p {
+    color: #cbd5e0; /* Un gris azulado más suave que el blanco puro */
+    line-height: 1.8; /* Aumentamos el interlineado para que sea fácil de leer */
+    font-size: 1.05rem;
+    text-align: justify; /* Alineación justificada para orden visual */
+    margin: 0;
+    white-space: pre-line; /* Respeta los saltos de línea si los hay */
+}
+
+/* Resaltado de palabras clave (si usas asteriscos en tu base de datos) */
+.service-detail-card p b, 
+.service-detail-card p strong {
+    color: #00AEEF;
+    font-weight: 600;
+}
+
+/* CONTENEDOR DE LA LISTA DE SERVICIOS */
+.services-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 60px; /* Espacio mas grande entre cada tarjeta de servicio */
+    margin-top: 30px;
+}
+
+/* LA TARJETA DE CADA SERVICIO */
+.service-detail-card {
+    background: rgba(255, 255, 255, 0.02);
+    padding: 35px; /* Más aire interno */
+    border-radius: 20px;
+    border-left: 4px solid #00AEEF; /* Línea de acento Cyan */
+    transition: all 0.4s ease;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.service-detail-card:hover {
+    background: rgba(0, 174, 239, 0.05);
+    transform: translateX(15px); /* Efecto de desplazamiento pro */
+    box-shadow: -10px 0 20px rgba(0, 174, 239, 0.1);
+}
+
+
+/* Contenedor al final de la tarjeta */
+.card-footer-actions {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05); /* Línea divisoria sutil */
+    text-align: center;
+}
+
+/* El enlace "Ver Video" */
+.link-video-pro {
+    color: #00AEEF;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.link-video-pro:hover {
+    color: #ffffff;
+    text-shadow: 0 0 8px rgba(0, 174, 239, 0.8);
+    transform: translateY(-2px);
+}
+
+/* Icono (si usas FontAwesome) */
+.link-video-pro i {
+    font-size: 1.1rem;
+}
+
+/* Aseguramos que la tarjeta tenga una altura mínima para que todo alinee */
+.proyecto-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.card-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.descripcion-text {
+    flex-grow: 1; /* Esto empuja el footer hacia abajo */
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+    .grid-2 { grid-template-columns: 1fr; }
+    .form-section { padding-top: 100px; }
+}
+
+
+
+/* ===== SECCIÓN DE CONTACTO ===== */
+
+
+.form-container-cotizacion {
+    background: rgba(255, 255, 255, 0.03); /* Fondo sutil */
+    border: 1px solid rgba(0, 174, 239, 0.3); /* Borde cyan suave */
+    border-radius: 20px;
+    padding: 50px;
+    max-width: 600px; /* Para que no se estire demasiado */
+    margin: 0 auto;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4); /* Sombra para dar peso */
+}
+
+.form-section2 {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 20px 80px;
+    background: radial-gradient(circle at bottom left, rgba(0, 174, 239, 0.15), transparent 40%);
+}
+
+/* CONTENEDOR DEL FORMULARIO */
+.form-section2 .form-container {
+    width: 100%;
+    max-width: 550px;
+    padding: 50px;
+    padding-top: 100px;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4), 
+                0 0 15px rgba(0, 174, 239, 0.1);
+    animation: slideUp 0.8s ease-out;
+}
+
+/* TÍTULO */
+.form-section2 h2 {
+    font-size: 2rem;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 35px;
+    color: #fff;
+    letter-spacing: -0.5px;
+}
+
+.form-section2 h2::after {
+    content: "";
+    display: block;
+    width: 50px;
+    height: 4px;
+    background: #00AEEF;
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+/* ESTILO DE LOS INPUTS */
+.form-section2 form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-section2 input, 
+.form-section2 textarea {
+    width: 100%;
+    padding: 16px 20px;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+/* Efecto al escribir */
+.form-section2 input:focus, 
+.form-section2 textarea:focus {
+    outline: none;
+    background: rgba(0, 174, 239, 0.05);
+    border-color: #00AEEF;
+    box-shadow: 0 0 15px rgba(0, 174, 239, 0.2);
+}
+
+.form-section2 textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+/* BOTÓN DE ENVÍO */
+.form-section2 button {
+    margin-top: 10px;
+    padding: 18px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #003366 0%, #00AEEF 100%);
+    cursor: pointer;
+    transition: all 0.4s ease;
+    box-shadow: 0 10px 20px rgba(0, 174, 239, 0.2);
+}
+
+.form-section2 button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(0, 174, 239, 0.4);
+    filter: brightness(1.1);
+}
+
+.form-section2 button:active {
+    transform: translateY(0);
+}
+
+/* ANIMACIÓN DE ENTRADA */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+    .form-section2 .form-container {
+        padding: 30px 20px;
+        margin: 0 15px;
+    }
+    
+    .form-section2 h2 {
+        font-size: 1.6rem;
+    }
+}
+/* VIDEOS */
+
+/* Centra el video en la página y da espacio al menú */
+.video-page-wrapper {
+    padding-top: 140px; /* Evita que el menú tape el video */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+}
+
+/* MARCO DEL VIDEO: Aquí controlas qué tan grande se ve */
+.video-display-frame {
+    width: 90%;
+    max-width: 1000px; /* Ajusta este número si lo quieres más chico (ej. 800px) */
+    aspect-ratio: 16 / 9; /* Mantiene la forma horizontal perfecta */
+    border-radius: 20px; /* Bordes suaves estilo tus tarjetas */
+    overflow: hidden;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5); /* Sombra para que flote */
+    border: 1px solid rgba(0, 174, 239, 0.2); /* Borde cyan muy sutil */
+}
+
+.video-box-refined {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Hace que el video llene el marco profesionalmente */
+}
+
+/* Ajuste para celulares */
+@media (max-width: 768px) {
+    .video-display-frame {
+        max-width: 95%;
+        border-radius: 12px;
+    }
+}
+
+/* BREAKPOINT PARA CELULARES (Menos de 768px) */
+@media (max-width: 768px) {
+    
+    /* Aquí meteremos los ajustes */
+
+}
+
+
+
+@media (max-width: 768px) {
+    /* Si usas Grid en el contenedor de las tarjetas */
+    .cards-container, .grid-3 {
+        grid-template-columns: 1fr !important; /* Fuerza una sola columna */
+        gap: 20px;
+        padding: 10px;
+    }
+
+    .proyecto-card {
+        width: 100%; /* Asegura que no se salgan de la pantalla */
+    }
+}
+
+@media (max-width: 768px) {
+    .form-container-cotizacion, .video-display-frame {
+        width: 95% !important; /* Ocupa casi todo el ancho del cel */
+        padding: 20px;         /* Reduce el relleno interno */
+    }
+
+    h1, h2 {
+        font-size: 1.8rem;     /* Achica los títulos para que no se corten */
+    }
+}

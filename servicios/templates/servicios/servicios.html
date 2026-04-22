@@ -1,0 +1,30 @@
+{% extends "inicio/menu.html" %}
+
+
+
+{% block titulo %}SERVICIOS{% endblock %}
+{% block proyecto %}Servicios{% endblock %}
+{% block contenido %}
+<div class="section-intro-premium">
+    
+    <h3 class="main-title-bold">Personaliza tu Experiencia 360°</h3>
+    <div class="accent-line"></div>
+    <p class="subtext-refined">
+        Selecciona el plan que mejor se adapte a tu proyecto y cuéntanos tus ideas. 
+        Nuestro equipo diseñará una propuesta técnica a tu medida.
+    </p>
+</div>
+
+<div class="servicios-container">
+    {% for servicio in servicios %}
+        <div class="servicio-card">
+            {% if servicio.imagen %}
+                <img src="{{ servicio.imagen.url }}">
+            {% endif %}
+            <h3 class="h4servicios">{{ servicio.nombre }}</h3>
+            <p>{{ servicio.descripcion }}</p>
+            <a href="{% url 'cotizacion' servicio.id %}">Quiero cotizar</a>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

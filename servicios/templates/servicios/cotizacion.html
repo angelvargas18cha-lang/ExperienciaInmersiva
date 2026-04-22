@@ -1,0 +1,86 @@
+{% extends "inicio/menu.html" %}
+{% load static %}
+
+{% block titulo %}COTIZACIONES | 360°{% endblock %}
+
+{% block contenido %}
+<section class="form-section">
+    <div class="container">
+        <!-- Formulario de cotización -->
+        <h1 class="main-title"></h1>
+        <div class="main-quote-box">
+            <div class="grid-2">
+                <div class="info-side">
+                    <h2 class="sub-style"></h2>
+                    <div class="services-wrapper">
+                        {% for d in descripciones %}
+                        <div class="service-detail-card">
+                            <h3>{{ d.servicio }}</h3>
+                            <p>{{ d.descripcion }}</p>
+                        </div>
+                        {% empty %}
+                        <p class="paleta">No hay descripción disponible</p>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="form-side">
+                    <h2 class="sub-style">Solicitar Cotización</h2>
+                    <form method="POST" class="pro-form">
+                        {% csrf_token %}
+                        <input type="text" name="nombre" placeholder="Tu Nombre" required />
+                        <input type="email" name="correo" placeholder="Correo Electrónico" required />
+                        <input type="text" name="telefono" placeholder="Teléfono de Contacto" required />
+                        <textarea name="descripcion" placeholder="Cuéntanos sobre tu proyecto..." required></textarea>
+                        <button type="submit" class="btn-glow">Enviar Cotización</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Formulario de reseña -->
+        <div class="reseña-section">
+            <h2>¿Qué te pareció el servicio?</h2>
+            <form method="POST">
+                {% csrf_token %}
+                <input type="text" name="usuario" placeholder="Tu nombre" required />
+                <textarea name="mensaje" placeholder="Escribe tu reseña aquí..." required></textarea>
+
+                <!-- ⭐ ESTRELLAS INTERACTIVAS -->
+                <div class="rating">
+                    <input type="hidden" name="calificacion" id="calificacion" required />
+                    <span class="star-input" data-value="1">★</span>
+                    <span class="star-input" data-value="2">★</span>
+                    <span class="star-input" data-value="3">★</span>
+                    <span class="star-input" data-value="4">★</span>
+                    <span class="star-input" data-value="5">★</span>
+                </div>
+                <button type="submit">Comentar</button>
+            </form>
+        </div>
+
+        <!-- Reseñas de clientes -->
+        <div class="reseñas">
+            <h2>Reseñas de Clientes</h2>
+            <div class="grid-3">
+                {% for comentario in comentarios %}
+                <div class="card">
+                    <div class="stars">
+                        {% for i in "12345" %}
+                            {% if forloop.counter <= comentario.calificacion %}
+                                <span class="star filled">★</span>
+                            {% else %}
+                                <span class="star">★</span>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <strong class="color">{{ comentario.usuario }}</strong>
+                    <p>{{ comentario.mensaje }}</p>
+                </div>
+                {% empty %}
+                    <p class="paleta">Aún no hay reseñas. ¡Sé el primero!</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

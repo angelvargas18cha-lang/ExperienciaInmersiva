@@ -1,0 +1,67 @@
+{% extends "inicio/menu.html" %}
+{% load static %}
+
+{% block titulo %}Nuestros Proyectos | 360°{% endblock %}
+
+{% block contenido %}
+<div class="proyectos-wrapper">
+    
+    <header class="proyectos-header">
+        <h1 class="fade-in">Nuestros Proyectos</h1>
+        <p class="subtitle">Innovación y experiencias inmersivas que transforman espacios.</p>
+        <div class="header-line"></div>
+    </header>
+
+    <section class="featured-video-section">
+        <div class="video-info">
+            <span class="badge">Recorrido Destacado</span>
+            <h2>Explora la Universidad Tecnológica de Morelia</h2>
+            <p>Un vistazo a nuestra tecnología de captura de realidad en 360°.</p>
+        </div>
+        
+        <div class="video-container">
+            <video class="video-box" controls poster  src="{% static 'inicio/video/videoutm.mp4' %}" type="video/mp4"">
+                Tu navegador no soporta videos.
+            </video>
+        </div>
+    </section>
+
+    <section class="portfolio-grid">
+        <div class="section-title">
+            <h3>Portafolio Completo</h3>
+        </div>
+        
+        <div class="cards-container">
+            {% for proyecto in proyectos %}
+                <div class="proyecto-card">
+                    <div class="card-img-wrapper">
+                        <img src="{{ proyecto.imagen.url }}" alt="{{ proyecto.proyecto }}">
+                        <div class="card-overlay">
+                            <span>Ver Detalles</span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h2 class="h2proyectos">{{ proyecto.proyecto }}</h2>
+                        <p class="empresa-tag"><strong>Empresa:</strong> {{ proyecto.empresa }}</p>
+                        <p class="descripcion-text">{{ proyecto.descripcion }}</p>
+
+                      
+                        <div class="card-footer-actions">
+                            {% if forloop.counter == 1 %}
+                                <a href="{% url 'video1' %}" class="link-video-pro">
+                                    <i class="fas fa-play-circle"></i> Ver Video
+                                </a>
+                            {% elif forloop.counter == 2 %}
+                                <a href="{% url 'video2' %}" class="link-video-pro">
+                                    <i class="fas fa-play-circle"></i> Ver Video
+                                </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+ 
+</div>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "inicio/menu.html" %}
+{% load static %}
+{% block titulo %}Fábrica de Sillones y Mobiliario{% endblock %}
+{% block contenido %}
+<div class="video-page-wrapper">
+    <div class="video-display-frame">
+        <video class="video-box-refined" controls poster src="{% static 'inicio/video/inmoviliaria.mp4' %}" type="video/mp4">>
+            
+            Tu navegador no soporta videos.
+        </video>
+    </div>
+</div>
+{% endblock %}

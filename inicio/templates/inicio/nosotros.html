@@ -1,0 +1,61 @@
+{% extends "inicio/menu.html" %}
+{% load static %}
+
+{% block titulo %}Nosotros | Experiencia Inmersiva 360{% endblock %}
+
+{% block contenido %}
+<div class="nosotros-wrapper">
+
+    <section class="hero-360-v2">
+        <div class="container hero-flex">
+            <div class="hero-text-content">
+                <span class="badge">Tecnología de Vanguardia</span>
+                <h1 class="titulo-moderno">
+                    Vive el Mundo en <br>
+                    <span class="gradient-text">360 Grados</span>
+                </h1>
+                <p class="hero-lead">Transformamos espacios físicos en experiencias digitales inmersivas de alto impacto.</p>
+            </div>
+            <div class="hero-visual">
+                <div class="image-glow-container">
+                    <img src="{% static 'inicio/img/logotipo.jpeg' %}" alt="Logo Experiencia Inmersiva" class="logo-hero">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container content-grid">
+        
+        <section class="info-box main-info">
+            <div class="info-icon">🚀</div>
+            <h2>¿Quiénes somos?</h2>
+            <p>
+                Somos <strong>Experiencia Inmersiva 360</strong>, líderes en el diseño de ecosistemas digitales 
+                especializados en modernizar la interacción institucional y empresarial a través de la realidad virtual.
+            </p>
+        </section>
+
+        <section class="info-box highlight-box">
+            <div class="info-icon">💎</div>
+            <h2>¿Por qué elegirnos?</h2>
+            <p>
+                Desarrollamos recorridos virtuales 360° con <strong>modelos tridimensionales</strong> y puntos interactivos. 
+                Nuestra tecnología permite una exploración dinámica, integrando multimedia que facilita la toma de decisiones 
+                y mejora la presentación de cualquier espacio.
+            </p>
+        </section>
+
+        <section class="info-box">
+            <div class="info-icon">🛠️</div>
+            <h2>¿Qué hacemos?</h2>
+            <ul class="feature-list">
+                <li>Captura de realidad en alta resolución.</li>
+                <li>Hotspots interactivos y navegación intuitiva.</li>
+                <li>Integración de modelos 3D y video 4K.</li>
+                <li>Entornos inmersivos multi-plataforma.</li>
+            </ul>
+        </section>
+
+    </div>
+</div>
+{% endblock %}
